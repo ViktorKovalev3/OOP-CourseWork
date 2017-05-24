@@ -2,6 +2,7 @@
 #define MECHANIC_H
 
 #include "ExponentialDistribution.h"
+#include <memory>
 typedef unsigned minute;
 
 class Mechanic
@@ -9,9 +10,11 @@ class Mechanic
 public:
     Mechanic( double mechanicsRepairingTimeMean );
     void startRepairMachine ( minute repairingStartTime );
-    bool workIsDone ( minute currentTime );
+    bool IsWorkFinished ( minute currentTime );
 private:
-    static ExponentialDistribution mechanicsRepairingTimeDistribution;
+    static std::unique_ptr<ExponentialDistribution> mechanicsRepairingTimeDistribution;
+    minute repairingStartTime_;
+    minute reparingTime_;
 };
 
 #endif // MECHANIC_H
