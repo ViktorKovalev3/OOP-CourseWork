@@ -9,9 +9,9 @@ class Statistic
 {
 public:
     Statistic( double mean );
-    ~Statistic();
     void setExpDistributionMean ( double mean );
     double getSampleMean ( uint sampleSize );
+    ~Statistic();
 private:
     ExponentialDistribution* testDistribution;
 };

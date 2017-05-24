@@ -10,8 +10,7 @@ public:
     void setMean( double mean );
     double getRandomNumber();
 private:
-    double mean_;
-    std::exponential_distribution<double> randomGenerator_;
+    double expDistLambda_;
 };
 
 #endif // EXPONENTIALDISTRIBUTION_H
