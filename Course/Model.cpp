@@ -7,8 +7,8 @@ Model::Model(uint numOfMechanics, uint numOfMachines, double machinesFailuresMea
     machinesFailuresDistribution_ = std::make_unique<ExponentialDistribution>(machinesFailuresMean);
     mechanicsRepairingTimeDistribution_ = std::make_shared<ExponentialDistribution>(mechanicsRepairingTimeMean);
     //Adding workers
-    for (uint i = numOfMechanics; !i; --i)
-        freeMechanics_.emplace_back(std::make_unique<Mechanic>(mechanicsRepairingTimeDistribution_));
+    for (uint i = numOfMechanics; i; --i)
+        freeMechanics_.push_back(std::make_unique<Mechanic>(mechanicsRepairingTimeDistribution_));
     //Adding machines
     numOfWorkedMachines_ = numOfMachines;
 }
@@ -68,17 +68,17 @@ void Model::setNumOfMechanics( uint N )
     if (N >= currentNumOfMechanics){
         delta = N - currentNumOfMechanics;
         //Add delta of mechanics to free mechanics list
-        for (uint i = delta; !i; --i)
+        for (uint i = delta; i; --i)
             freeMechanics_.emplace_back(std::make_unique<Mechanic>(mechanicsRepairingTimeDistribution_));
     } else{
         delta = currentNumOfMechanics - N;
         //Trying to remove free mechanics
-        for (uint i = delta; !i && !freeMechanics_.size(); --i){
+        for (uint i = delta; i && !freeMechanics_.size(); --i){
             freeMechanics_.pop_back();
             --delta;
         }
         //if delta != 0, try delete busy mechanics:
-        for (uint i = delta; !i && !busyMechanics_.size(); --i){
+        for (uint i = delta; i && !busyMechanics_.size(); --i){
             busyMechanics_.pop_back();
             ++numOfBrokenMachines_;
         }
@@ -112,7 +112,7 @@ void Model::setNumOfMachines( uint M )
             numOfBrokenMachines_ = 0;
         }
         //trying to delete repairing machines:
-        for (size_t i = delta; !i; --i)
+        for (size_t i = delta; i; --i)
             freeMechanics_.emplace_back(busyMechanics_.at(i).release());
     }
 }
@@ -135,7 +135,7 @@ void Model::resetModel()
     numOfBrokenMachines_ = 0;
 
     //Reset all mechanics
-    for (size_t i = busyMechanics_.size(); !i; --i)
+    for (size_t i = busyMechanics_.size(); i; --i)
         freeMechanics_.emplace_back(busyMechanics_.at(i).release());
 
     //Reset time
