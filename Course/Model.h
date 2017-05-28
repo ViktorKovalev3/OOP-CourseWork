@@ -2,16 +2,18 @@
 #define MODEL_H
 
 #include "Mechanic.h"
+#include "ExponentialDistribution.h"
 #include <vector>
+#include <memory>
 
 typedef unsigned uint;
+typedef uint minute;
 
 class Model
 {
 public:
-    Model( uint NumOfMechanics, uint NumOfMachines,  double MachinesFailuresMean, double MechanicsRepairingTimeMean );
-    ~Model();
-    long doMinuteStepAndGiveModelTime ();
+    Model( uint numOfMechanics, uint numOfMachines,  double machinesFailuresMean, double mechanicsRepairingTimeMean );
+    minute doMinuteStepAndGiveModelTime ();
     unsigned getNumOfBusyMechanics  () const;
     unsigned getNumOfBrokenMachines () const;
 
@@ -22,12 +24,15 @@ public:
 
     void resetModel ();
 private:
-    std::vector<Mechanic*> freeMechanics_;
-    std::vector<Mechanic*> busyMechanics_;
-    uint NumOfMechanics_;
-    uint NumOfMachines_;
-    double MachinesFailuresMean_;
-    double MechanicsRepairingTimeMean_;
+    std::shared_ptr<ExponentialDistribution> mechanicsRepairingTimeDistribution_;
+    std::vector<std::unique_ptr<Mechanic>> freeMechanics_;
+    std::vector<std::unique_ptr<Mechanic>> busyMechanics_;
+
+    std::unique_ptr<ExponentialDistribution> machinesFailuresDistribution_;
+    uint numOfWorkedMachines_;
+    uint numOfBrokenMachines_;
+
+    minute timeOfModel_ = 0;
 };
 
 #endif // MODEL_H
