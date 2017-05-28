@@ -17,7 +17,7 @@ minute Model::doMinuteStepAndGiveModelTime()
 {
     //Simulated breakage of machines
     uint generatedNumOfBrokenMachines = uint( std::round(machinesFailuresDistribution_->getRandomNumber()) );
-    if (!generatedNumOfBrokenMachines)
+    if (generatedNumOfBrokenMachines)
         if (generatedNumOfBrokenMachines < numOfWorkedMachines_){
             numOfBrokenMachines_ += generatedNumOfBrokenMachines;
             numOfWorkedMachines_ -= generatedNumOfBrokenMachines;
