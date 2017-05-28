@@ -8,11 +8,11 @@ typedef unsigned minute;
 class Mechanic
 {
 public:
-    Mechanic( double mechanicsRepairingTimeMean );
+    Mechanic( std::shared_ptr<ExponentialDistribution> mechanicsRepairingTimeDistribution );
     void startRepairMachine ( minute repairingStartTime );
     bool IsWorkFinished ( minute currentTime );
 private:
-    static std::unique_ptr<ExponentialDistribution> mechanicsRepairingTimeDistribution;
+    std::shared_ptr<ExponentialDistribution> mechanicsRepairingTimeDistribution_;
     minute repairingStartTime_;
     minute reparingTime_;
 };

@@ -1,17 +1,13 @@
 #include "Mechanic.h"
 
-std::unique_ptr<ExponentialDistribution> Mechanic::mechanicsRepairingTimeDistribution = nullptr;
-
-Mechanic::Mechanic(double mechanicsRepairingTimeMean)
-{
-    if (!mechanicsRepairingTimeDistribution)
-        mechanicsRepairingTimeDistribution = std::make_unique<ExponentialDistribution>(mechanicsRepairingTimeMean);
-}
+Mechanic::Mechanic(std::shared_ptr<ExponentialDistribution> mechanicsRepairingTimeDistribution) :
+    mechanicsRepairingTimeDistribution_(mechanicsRepairingTimeDistribution)
+{}
 
 void Mechanic::startRepairMachine(minute repairingStartTime)
 {
     repairingStartTime_  = repairingStartTime;
-    reparingTime_ = int(mechanicsRepairingTimeDistribution->getRandomNumber());
+    reparingTime_ = int(mechanicsRepairingTimeDistribution_->getRandomNumber());
 }
 
 bool Mechanic::IsWorkFinished(minute currentTime)
