@@ -10,7 +10,7 @@ typedef unsigned uint;
 typedef uint minutes;
 
 #define DEFAULT_MIN_PER_SCND 1
-#define DEFAULT_STOP_SCND 10000
+#define DEFAULT_STOP_MINUT 10000
 #define DEFAULT_NUM_OF_MECH 2
 #define DEFAULT_NUM_OF_MACH 20
 #define DEFAULT_MACH_FAIL_MEAN 1
@@ -22,7 +22,7 @@ class Engine : public QObject
 public:
     Engine(QObject* parent = nullptr);
 public slots:
-    void start ( minutes minutePerSecnd = DEFAULT_MIN_PER_SCND, minutes stopTime = DEFAULT_STOP_SCND);
+    void start ( minutes minutePerSecnd = DEFAULT_MIN_PER_SCND, minutes stopTime = DEFAULT_STOP_MINUT);
     void pause ();
     void stop ();
     void setSettings ( uint numOfMechanics = DEFAULT_NUM_OF_MECH, uint numOfMachines = DEFAULT_NUM_OF_MACH,
