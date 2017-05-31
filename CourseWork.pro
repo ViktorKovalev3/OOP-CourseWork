@@ -24,8 +24,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        GUI/mainwindow.cpp \
+    Course/Engine.cpp \
+    Course/Model.cpp \
+    Course/Mechanic.cpp \
+    Course/Statistic.cpp \
+    Course/ExponentialDistribution.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += GUI/mainwindow.h \
+    Course/Engine.h \
+    Course/Model.h \
+    Course/Mechanic.h \
+    Course/Statistic.h \
+    Course/ExponentialDistribution.h
 
-FORMS    += mainwindow.ui
+FORMS    += GUI/mainwindow.ui
+CONFIG += c++14
