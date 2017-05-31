@@ -15,13 +15,15 @@ Engine::Engine(QObject* parent) :
 
 void Engine::start(minutes minutePerSecnd, minutes stopTime)
 {
+    if (!isPaused)
+        stopTime_ = stopTime;
     timer->start(1000 / minutePerSecnd); //1000 ms = 1 sec
-    stopTime_ = stopTime;
 }
 
 void Engine::pause()
 {
     timer->stop();
+    isPaused = 0;
 }
 
 void Engine::stop()
