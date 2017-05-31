@@ -6,13 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1043</width>
+    <width>1143</width>
     <height>419</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>1043</width>
+    <width>1143</width>
     <height>419</height>
    </size>
   </property>
@@ -22,267 +22,289 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout_2">
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout">
+     <widget class="QWidget" name="wgtModelStatusView" native="true">
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_8">
+         <item>
+          <widget class="QLineEdit" name="lineEdit_10">
+           <property name="text">
+            <string>Занятые механики</string>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="leBusyMech">
+           <property name="inputMask">
+            <string/>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_9">
+         <item>
+          <widget class="QLineEdit" name="lineEdit_11">
+           <property name="text">
+            <string>Поломанные станки</string>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="leBrokenMachines">
+           <property name="inputMask">
+            <string/>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QLineEdit" name="lineEdit_14">
+           <property name="text">
+            <string>Время симуляции</string>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="leModelTime">
+           <property name="inputMask">
+            <string/>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QProgressBar" name="pbModelTime">
+         <property name="value">
+          <number>24</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_5">
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_8">
-        <item>
-         <widget class="QLineEdit" name="lineEdit_10">
-          <property name="text">
-           <string>Занятые механики</string>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="leBusyMech">
-          <property name="inputMask">
-           <string/>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
+       <widget class="QPushButton" name="pbModelStatus">
+        <property name="text">
+         <string>&lt;&lt;Результаты</string>
+        </property>
+       </widget>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_9">
-        <item>
-         <widget class="QLineEdit" name="lineEdit_11">
-          <property name="text">
-           <string>Поломанные станки</string>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="leBrokenMachines">
-          <property name="inputMask">
-           <string/>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <widget class="QLineEdit" name="lineEdit_14">
-          <property name="text">
-           <string>Время симуляции</string>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="leModelTime">
-          <property name="inputMask">
-           <string/>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <widget class="QProgressBar" name="pbModelTime">
-        <property name="value">
-         <number>24</number>
+       <widget class="QPushButton" name="pbModelSettings">
+        <property name="text">
+         <string>Параметры&gt;&gt;</string>
         </property>
        </widget>
       </item>
      </layout>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
-        <item>
-         <widget class="QLineEdit" name="lineEdit_4">
-          <property name="mouseTracking">
-           <bool>true</bool>
-          </property>
-          <property name="acceptDrops">
-           <bool>true</bool>
-          </property>
-          <property name="text">
-           <string>Кол-во механиков</string>
-          </property>
-          <property name="frame">
-           <bool>true</bool>
-          </property>
-          <property name="echoMode">
-           <enum>QLineEdit::Normal</enum>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-          <property name="cursorMoveStyle">
-           <enum>Qt::VisualMoveStyle</enum>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="leNumOfMechanics">
-          <property name="inputMask">
-           <string>999999999</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_6">
-        <item>
-         <widget class="QLineEdit" name="lineEdit_5">
-          <property name="text">
-           <string>Кол-во станков</string>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="leNumOfMachines">
-          <property name="inputMask">
-           <string>999999999</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_7">
-        <item>
-         <widget class="QLineEdit" name="lineEdit_8">
-          <property name="text">
-           <string>Ср. время починки, мин</string>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="leMechanicsRepairingTimeMean">
-          <property name="inputMask">
-           <string>999999999</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_5">
-        <item>
-         <widget class="QLineEdit" name="lineEdit_6">
-          <property name="text">
-           <string>Ср. частота поломок, раз\час</string>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="leMachinesFailuresMean">
-          <property name="inputMask">
-           <string>999999999</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_10">
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout_4">
-          <item>
-           <widget class="QLineEdit" name="lineEdit_19">
-            <property name="text">
-             <string>Скорость симуляции, мин\сек</string>
-            </property>
-            <property name="readOnly">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="leMinPerScnd">
-            <property name="inputMask">
-             <string>999999999</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout_6">
-          <item>
-           <widget class="QLineEdit" name="lineEdit_20">
-            <property name="text">
-             <string>Время конца, мин</string>
-            </property>
-            <property name="readOnly">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="leStopTime">
-            <property name="inputMask">
-             <string>999999999</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pbStart">
-        <property name="text">
-         <string>Старт</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pbPause">
-        <property name="text">
-         <string>Пауза</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pbStop">
-        <property name="text">
-         <string>Стоп</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButton">
-        <property name="text">
-         <string>Тест статистики</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <widget class="QWidget" name="wgtModelSettingView" native="true">
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLineEdit" name="lineEdit_4">
+           <property name="mouseTracking">
+            <bool>true</bool>
+           </property>
+           <property name="acceptDrops">
+            <bool>true</bool>
+           </property>
+           <property name="text">
+            <string>Кол-во механиков</string>
+           </property>
+           <property name="frame">
+            <bool>true</bool>
+           </property>
+           <property name="echoMode">
+            <enum>QLineEdit::Normal</enum>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="cursorMoveStyle">
+            <enum>Qt::VisualMoveStyle</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="leNumOfMechanics">
+           <property name="inputMask">
+            <string>999999999</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <item>
+          <widget class="QLineEdit" name="lineEdit_5">
+           <property name="text">
+            <string>Кол-во станков</string>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="leNumOfMachines">
+           <property name="inputMask">
+            <string>999999999</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <item>
+          <widget class="QLineEdit" name="lineEdit_8">
+           <property name="text">
+            <string>Ср. время починки, мин</string>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="leMechanicsRepairingTimeMean">
+           <property name="inputMask">
+            <string>999999999</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <widget class="QLineEdit" name="lineEdit_6">
+           <property name="text">
+            <string>Ср. частота поломок, раз\час</string>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="leMachinesFailuresMean">
+           <property name="inputMask">
+            <string>999999999</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_10">
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_4">
+           <item>
+            <widget class="QLineEdit" name="lineEdit_19">
+             <property name="text">
+              <string>Скорость симуляции, мин\сек</string>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="leMinPerScnd">
+             <property name="inputMask">
+              <string>999999999</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_6">
+           <item>
+            <widget class="QLineEdit" name="lineEdit_20">
+             <property name="text">
+              <string>Время конца, мин</string>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="leStopTime">
+             <property name="inputMask">
+              <string>999999999</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pbStart">
+         <property name="text">
+          <string>Старт</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pbPause">
+         <property name="text">
+          <string>Пауза</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pbStop">
+         <property name="text">
+          <string>Стоп</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>Тест статистики</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </item>
    </layout>
   </widget>

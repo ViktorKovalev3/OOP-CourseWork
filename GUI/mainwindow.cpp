@@ -106,3 +106,19 @@ void MainWindow::on_pushButton_clicked()
 {
     statisticGUI->show();
 }
+
+void MainWindow::on_pbModelStatus_clicked()
+{
+    if (ui->wgtModelStatusView->isHidden())
+        ui->wgtModelStatusView->show();
+    else
+        ui->wgtModelStatusView->hide();
+}
+
+void MainWindow::on_pbModelSettings_clicked()
+{
+    if (ui->wgtModelSettingView->isHidden())
+        ui->wgtModelSettingView->show();
+    else
+        ui->wgtModelSettingView->hide();
+}

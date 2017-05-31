@@ -27,6 +27,10 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_pbModelStatus_clicked();
+
+    void on_pbModelSettings_clicked();
+
 private:
     Ui::MainWindow *ui;
     Engine* engine;
