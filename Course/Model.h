@@ -3,7 +3,7 @@
 
 #include "Mechanic.h"
 #include "ExponentialDistribution.h"
-#include <vector>
+#include <list>
 #include <memory>
 
 typedef unsigned uint;
@@ -25,8 +25,8 @@ public:
     void resetModel ();
 private:
     std::shared_ptr<ExponentialDistribution> mechanicsRepairingTimeDistribution_;
-    std::vector<std::unique_ptr<Mechanic>> freeMechanics_;
-    std::vector<std::unique_ptr<Mechanic>> busyMechanics_;
+    std::list<std::unique_ptr<Mechanic>> freeMechanics_;
+    std::list<std::unique_ptr<Mechanic>> busyMechanics_;
 
     std::unique_ptr<ExponentialDistribution> machinesFailuresDistribution_;
     uint numOfWorkedMachines_;

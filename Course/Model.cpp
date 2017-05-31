@@ -16,8 +16,8 @@ Model::Model(uint numOfMechanics, uint numOfMachines, double machinesFailuresMea
 minute Model::doMinuteStepAndGiveModelTime()
 {
     //Simulated breakage of machines
-    uint generatedNumOfBrokenMachines = uint( std::round(machinesFailuresDistribution_->getRandomNumber()) );
-    if (generatedNumOfBrokenMachines)
+    if (timeOfModel_ % 60 == 0) { //only once per hour
+        uint generatedNumOfBrokenMachines = uint( std::round(machinesFailuresDistribution_->getRandomNumber()) );
         if (generatedNumOfBrokenMachines < numOfWorkedMachines_){
             numOfBrokenMachines_ += generatedNumOfBrokenMachines;
             numOfWorkedMachines_ -= generatedNumOfBrokenMachines;
@@ -26,24 +26,25 @@ minute Model::doMinuteStepAndGiveModelTime()
             numOfBrokenMachines_ += numOfWorkedMachines_;
             numOfWorkedMachines_ = 0;
         }
+    }
 
     //Try to free busy mechanics
-    for (auto itBusyMechanic = busyMechanics_.begin(); itBusyMechanic != busyMechanics_.end() ; ++itBusyMechanic){
+    auto itBusyMechanic = busyMechanics_.begin();
+    while (itBusyMechanic != busyMechanics_.end()) {
         if ((*itBusyMechanic)->IsWorkFinished( timeOfModel_ ) ){
             freeMechanics_.push_back( std::move(*itBusyMechanic) );
-            busyMechanics_.erase(itBusyMechanic);
+            itBusyMechanic = busyMechanics_.erase(itBusyMechanic);
             ++numOfWorkedMachines_;
-        }
+        } else
+            ++itBusyMechanic;
     }
 
     //Try to repair machines
-    for (auto itFreeMechanic = freeMechanics_.begin();
-         (itFreeMechanic != freeMechanics_.end()) && (numOfBrokenMachines_ != 0);
-         ++itFreeMechanic)
-    {
+    auto itFreeMechanic = freeMechanics_.begin();
+    while ( (itFreeMechanic != freeMechanics_.end()) && (numOfBrokenMachines_ != 0) ) {
         (*itFreeMechanic)->startRepairMachine( timeOfModel_ );
         busyMechanics_.push_back( std::move(*itFreeMechanic) );
-        freeMechanics_.erase(itFreeMechanic);
+        itFreeMechanic = freeMechanics_.erase(itFreeMechanic);
         --numOfBrokenMachines_;
     }
 
@@ -112,8 +113,11 @@ void Model::setNumOfMachines( uint M )
             numOfBrokenMachines_ = 0;
         }
         //trying to delete repairing machines:
-        for (size_t i = delta; i; --i)
-            freeMechanics_.emplace_back(busyMechanics_.at(i).release());
+        auto itBusyMechanic = busyMechanics_.begin();
+        while (itBusyMechanic != busyMechanics_.end()) {
+            freeMechanics_.push_back( std::move(*itBusyMechanic) );
+            itBusyMechanic = busyMechanics_.erase(itBusyMechanic);
+        }
     }
 }
 
@@ -135,8 +139,8 @@ void Model::resetModel()
     numOfBrokenMachines_ = 0;
 
     //Reset all mechanics
-    for (size_t i = busyMechanics_.size(); i; --i)
-        freeMechanics_.emplace_back(busyMechanics_.at(i).release());
+    std::move(busyMechanics_.begin(), busyMechanics_.end(), std::back_inserter(freeMechanics_));
+    busyMechanics_.clear();
 
     //Reset time
     timeOfModel_ = 0;
