@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QTime>
 #include "../Course/Engine.h"
-#include "../Course/Statistic.h"
+#include "statisticGUI.h"
 
 namespace Ui {
 class MainWindow;
@@ -25,11 +25,13 @@ private slots:
 
     void on_pbStop_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     Engine* engine;
-    Statistic* statistic;
     QTime modelTime_;
+    StatisticGUI* statisticGUI;
 };
 
 #endif // MAINWINDOW_H

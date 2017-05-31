@@ -29,14 +29,17 @@ SOURCES += main.cpp\
     Course/Model.cpp \
     Course/Mechanic.cpp \
     Course/Statistic.cpp \
-    Course/ExponentialDistribution.cpp
+    Course/ExponentialDistribution.cpp \
+    GUI/statisticGUI.cpp
 
 HEADERS  += GUI/mainwindow.h \
     Course/Engine.h \
     Course/Model.h \
     Course/Mechanic.h \
     Course/Statistic.h \
-    Course/ExponentialDistribution.h
+    Course/ExponentialDistribution.h \
+    GUI/statisticGUI.h
 
-FORMS    += GUI/mainwindow.ui
+FORMS    += GUI/mainwindow.ui \
+    GUI/statisticGUI.ui
 CONFIG += c++14

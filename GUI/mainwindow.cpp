@@ -6,7 +6,8 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    modelTime_(0, 0, 0)
+    modelTime_(0, 0, 0),
+    statisticGUI(new StatisticGUI(parent))
 {
     ui->setupUi(this);
     engine = new Engine(this);
@@ -99,4 +100,9 @@ void MainWindow::on_pbStop_clicked()
     ui->pbStart->setEnabled(1);
     ui->pbPause->setEnabled(0);
     ui->pbStop->setEnabled(0);
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    statisticGUI->show();
 }
