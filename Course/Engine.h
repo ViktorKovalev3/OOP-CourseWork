@@ -34,7 +34,6 @@ signals:
 private:
     QTimer* timer;
     minutes stopTime_;
-    bool isPaused = 0;
     std::unique_ptr<Model> modelOfManufactory_;
 };
 
